@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import ChatFaceData from '../services/ChatFaceData';
 
 const HomeScreen = () => {
-  const [chatFaceData] = useState(ChatFaceData);
+  const chatFaceData = ChatFaceData;
   const [selectedChatFaceData, setSelectedChatFaceData] = useState();
 
   useEffect(() => {
@@ -12,9 +12,18 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View>
-      <Text>HomeScreen</Text>
-      <Text>I am {selectedChatFaceData.name}</Text>
+    <View style={{ alignItems: 'center', paddingTop: 90 }}>
+      <Text style={[{ color: selectedChatFaceData.primary }, { fontSize: 30 }]}>
+        Hello
+      </Text>
+      <Text
+        style={[
+          { color: selectedChatFaceData.primary },
+          { fontSize: 30, fontWeight: 'bold' },
+        ]}
+      >
+        I am {selectedChatFaceData?.name}
+      </Text>
     </View>
   );
 };
