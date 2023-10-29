@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://192.168.0.113:3000/api/bardapi';
+const BASE_URL = 'http://localhost:3000/api/bardapi';
 
-const getBardApi = (userMsg) => {
-  axios.get(BASE_URL + '?ques=' + userMsg);
+const getBardApi = async (userMsg) => {
+  await axios.get(BASE_URL + '?ques=' + userMsg);
 };
 
 export default {
