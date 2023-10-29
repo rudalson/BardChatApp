@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import ChatFaceData from '../services/ChatFaceData';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const [selectedChatFaceData, setSelectedChatFaceData] = useState(
     ChatFaceData[0]
   );
@@ -80,7 +82,7 @@ const HomeScreen = () => {
       </View>
       <TouchableOpacity
         style={[
-          { backgroundColor: selectedChatFaceData.primary },
+          { backgroundColor: selectedChatFaceData?.primary },
           {
             padding: 17,
             width: Dimensions.get('screen').width * 0.6,
@@ -89,6 +91,11 @@ const HomeScreen = () => {
             marginTop: 30,
           },
         ]}
+        onPress={() => {
+          navigation.navigate('chat', {
+            selectedFace: selectedChatFaceData,
+          });
+        }}
       >
         <Text style={{ fontSize: 16, color: '#fff' }}>Let's Chat</Text>
       </TouchableOpacity>
